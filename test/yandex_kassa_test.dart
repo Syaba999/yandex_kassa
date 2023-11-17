@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:yandex_kassa/kassa.dart';
-import 'package:yandex_kassa/models/payment_parameters.dart';
 import 'package:yandex_kassa/yandex_kassa.dart';
 
 void main() {
@@ -39,6 +37,6 @@ void main() {
   test('getPlatformVersion', () async {
     final result = await YandexKassa.startCheckout(paymentParameters);
 
-    expect(result.json, tokenizationResult.json);
+    expect(result?.json, tokenizationResult.json);
   });
 }

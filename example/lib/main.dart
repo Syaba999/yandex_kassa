@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:yandex_kassa/yandex_kassa.dart';
 import 'package:http_client/console.dart';
+import 'package:yandex_kassa/yandex_kassa.dart';
 
 void main() {
   runApp(MyApp());
@@ -75,7 +74,7 @@ class _MyAppState extends State<MyApp> {
                   children: [
                 Spacer(),
                 Container(
-                    child: OutlineButton(
+                    child: OutlinedButton(
                         child: const Text('Open payment screen'),
                         onPressed: () async {
                           final result = await YandexKassa.startCheckout(
@@ -103,7 +102,7 @@ class _MyAppState extends State<MyApp> {
                           textAlign: TextAlign.center,
                         )),
                   if (tokenizationResult?.success == true)
-                    OutlineButton(
+                    OutlinedButton(
                       child: Text('Send Token'),
                       onPressed: () async {
                         final httpClient = ConsoleClient();

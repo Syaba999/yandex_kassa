@@ -2,18 +2,19 @@ import 'package:yandex_kassa/models/json_encodable.dart';
 import 'package:yandex_kassa/yandex_kassa.dart';
 
 class TokenizationResult implements JsonEncodable {
-  final bool success;
-  final PaymentData paymentData;
-  final String error;
+  final bool? success;
+  final PaymentData? paymentData;
+  final String? error;
   TokenizationResult({this.success, this.error, this.paymentData});
 
-  factory TokenizationResult.fromJson(Map json) {
+  static TokenizationResult? fromJson(Map<String, dynamic>? json) {
     if (json == null) return null;
     return TokenizationResult(
         success: json['success'],
         paymentData: PaymentData.fromJson(json['data']),
         error: json['error']);
   }
+
   @override
   Map<String, dynamic> get json => {
         'success': success,
@@ -26,17 +27,18 @@ class TokenizationResult implements JsonEncodable {
 }
 
 class PaymentData implements JsonEncodable {
-  final String token;
-  final PaymentMethod paymentMethod;
+  final String? token;
+  final PaymentMethod? paymentMethod;
 
   PaymentData({this.token, this.paymentMethod});
 
-  factory PaymentData.fromJson(Map json) {
+  static PaymentData? fromJson(Map<String, dynamic>? json) {
     if (json == null) return null;
     return PaymentData(
         paymentMethod: PaymentMethod(json['paymentMethod']),
         token: json['token']);
   }
+
   @override
   Map<String, dynamic> get json => {
         'paymentMethod': paymentMethod?.json,
